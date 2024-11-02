@@ -1,0 +1,27 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos y carpetas de configuración del sistema operativo
+.idea/
+.vscode/
+.env
+
+# Dependencias de Composer
+composer.lock
+vendor/
+
+# Archivos de logs y temporales
+*.log
+*.tmp
+*.temp
+
+# Archivos de WordPress no esenciales
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+
+# Cache de herramientas de desarrollo locales (opcional)
+.docker/
+.vagrant/
