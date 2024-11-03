@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WordStats Pro
+ * Plugin Name: WordStatsPro
  * Description: Muestra el número de palabras, tiempo estimado de lectura e índice de legibilidad en los posts.
  * Version: 2.1
  * Author: Pedro Luis Cuevas Villarrubia
@@ -20,14 +20,14 @@ if (!defined('ABSPATH')) {
  * @param string $texto El texto a analizar
  * @return array Array con el índice y la descripción
  */
-function wordstats_pro_calcular_flesch($texto) {
+function wordstatspro_calcular_flesch($texto) {
     // Limpiar el texto
     $texto = wp_strip_all_tags($texto);
     
     // Contar sílabas, palabras y oraciones
     $palabras = str_word_count($texto, 0, 'áéíóúüñÁÉÍÓÚÜÑ');
     $oraciones = max(1, preg_match_all('/[.!?]["\'\)\]]*\s/u', $texto . ' ', $matches));
-    $silabas = wordstats_pro_contar_silabas($texto);
+    $silabas = wordstatspro_contar_silabas($texto);
     
     // Evitar división por cero
     if ($palabras == 0 || $oraciones == 0) {
@@ -41,7 +41,7 @@ function wordstats_pro_calcular_flesch($texto) {
     $indice = 206.84 - (60 * ($silabas / $palabras)) - (1.02 * ($palabras / $oraciones));
 
     // Determinar nivel de legibilidad
-    $nivel = wordstats_pro_obtener_nivel_legibilidad($indice);
+    $nivel = wordstatspro_obtener_nivel_legibilidad($indice);
 
     return array(
         'indice' => round($indice, 2),
@@ -52,7 +52,7 @@ function wordstats_pro_calcular_flesch($texto) {
 /**
  * Cuenta las sílabas en un texto en español
  */
-function wordstats_pro_contar_silabas($texto) {
+function wordstatspro_contar_silabas($texto) {
     $texto = strtolower($texto);
     $texto = str_replace(['á', 'é', 'í', 'ó', 'ú'], ['a', 'e', 'i', 'o', 'u'], $texto);
     
@@ -87,7 +87,7 @@ function wordstats_pro_contar_silabas($texto) {
 /**
  * Determina el nivel de legibilidad según el índice Fernández-Huerta
  */
-function wordstats_pro_obtener_nivel_legibilidad($indice) {
+function wordstatspro_obtener_nivel_legibilidad($indice) {
     if ($indice >= 90) return 'Muy fácil';
     if ($indice >= 80) return 'Fácil';
     if ($indice >= 70) return 'Algo fácil';
@@ -100,7 +100,7 @@ function wordstats_pro_obtener_nivel_legibilidad($indice) {
 /**
  * Obtiene la descripción detallada del nivel de legibilidad
  */
-function wordstats_pro_obtener_descripcion_nivel($indice) {
+function wordstatspro_obtener_descripcion_nivel($indice) {
     if ($indice >= 90) {
         return array(
             'nivel' => 'Muy fácil',
@@ -156,7 +156,7 @@ function wordstats_pro_obtener_descripcion_nivel($indice) {
 /**
  * Obtiene el color para el indicador de legibilidad
  */
-function wordstats_pro_obtener_color_legibilidad($indice) {
+function wordstatspro_obtener_color_legibilidad($indice) {
     if ($indice >= 80) return '#28a745'; // Verde - Muy fácil
     if ($indice >= 60) return '#17a2b8'; // Azul - Normal
     if ($indice >= 50) return '#ffc107'; // Amarillo - Algo difícil
@@ -166,35 +166,35 @@ function wordstats_pro_obtener_color_legibilidad($indice) {
 /**
  * Calcula y muestra el tiempo estimado de lectura y estadísticas
  */
-function wordstats_pro_calcula_tiempo($content) {
+function wordstatspro_calcula_tiempo($content) {
     if (!is_single() || get_post_type() !== 'post') {
         return $content;
     }
 
     // Obtener estadísticas básicas
     $palabras = str_word_count(wp_strip_all_tags($content));
-    $tiempo_letra = absint(get_option('wordstats_pro_velocidad_letra', 200));
-    $tiempo_estimado = max(1, ceil($palabras / $tiempo_letra));
+    $tiempo_letra = absint(get_option('wordstatspro_velocidad_letra', 200));
+    $tiempoesc_html_estimado = max(1, ceil($palabras / $tiempo_letra));
 
     // Calcular índice de legibilidad
-    $legibilidad = wordstats_pro_calcular_flesch($content);
-    $info_nivel = wordstats_pro_obtener_descripcion_nivel($legibilidad['indice']);
+    $legibilidad = wordstatspro_calcular_flesch($content);
+    $info_nivel = wordstatspro_obtener_descripcion_nivel($legibilidad['indice']);
 
     // Obtener estilos
-    $tipo_fuente = sanitize_text_field(get_option('wordstats_pro_tipo_fuente', 'Arial'));
-    $tamano_fuente = sanitize_text_field(get_option('wordstats_pro_tamano_fuente', '18px'));
-    $color_fondo = sanitize_hex_color(get_option('wordstats_pro_fondo_color', '#f0f0f0'));
-    $color_texto = sanitize_hex_color(get_option('wordstats_pro_texto_color', '#000000'));
+    $tipo_fuente = sanitize_text_field(get_option('wordstatspro_tipo_fuente', 'Arial'));
+    $tamano_fuente = sanitize_text_field(get_option('wordstatspro_tamano_fuente', '18px'));
+    $color_fondo = sanitize_hex_color(get_option('wordstatspro_fondo_color', '#f0f0f0'));
+    $color_texto = sanitize_hex_color(get_option('wordstatspro_texto_color', '#000000'));
 
     // Crear el indicador visual de legibilidad
-    $color_indicador = wordstats_pro_obtener_color_legibilidad($legibilidad['indice']);
+    $color_indicador = wordstatspro_obtener_color_legibilidad($legibilidad['indice']);
 
     // Añadir estilos y script para el tooltip
-    add_action('wp_footer', 'wordstats_pro_add_tooltip_scripts');
+    add_action('wp_footer', 'wordstatspro_add_tooltip_scripts');
 
     // Preparar el HTML
     $output = sprintf(
-        '<div class="wordstats-pro-meta" style="background-color:%s; color:%s; font-family:%s; font-size:%s; text-align:center; padding:15px 10px; margin-bottom:39px;">',
+        '<div class="wordstatspro-meta" style="background-color:%s; color:%s; font-family:%s; font-size:%s; text-align:center; padding:15px 10px; margin-bottom:39px;">',
         esc_attr($color_fondo),
         esc_attr($color_texto),
         esc_attr($tipo_fuente),
@@ -204,7 +204,7 @@ function wordstats_pro_calcula_tiempo($content) {
     $output .= sprintf(
         '<p>Este artículo tiene %d palabras | Tiempo estimado de lectura: %d minutos</p>',
         $palabras,
-        $tiempo_estimado
+        $tiempoesc_html_estimado
     );
 
     $output .= sprintf(
@@ -228,12 +228,12 @@ Nivel académico: %s
 
     return $output . $content;
 }
-add_filter('the_content', 'wordstats_pro_calcula_tiempo');
+add_filter('the_content', 'wordstatspro_calcula_tiempo');
 
 /**
  * Añade los estilos y scripts necesarios para el tooltip
  */
-function wordstats_pro_add_tooltip_scripts() {
+function wordstatspro_add_tooltip_scripts() {
     ?>
     <style>
         .nivel-legibilidad-tooltip {
@@ -293,55 +293,55 @@ function wordstats_pro_add_tooltip_scripts() {
 /**
  * Añade la página de opciones al menú de administración
  */
-function wordstats_pro_menu() {
+function wordstatspro_menu() {
     add_options_page(
-        __('WordStats Pro', 'wordstats-pro'),
-        __('WordStats Pro', 'wordstats-pro'),
+        __('WordStatsPro', 'wordstatspro'),
+        __('WordStatsPro', 'wordstatspro'),
         'manage_options',
-        'wordstats-pro',
-        'wordstats_pro_opciones_pagina'
+        'wordstatspro',
+        'wordstatspro_opciones_pagina'
     );
 }
-add_action('admin_menu', 'wordstats_pro_menu');
+add_action('admin_menu', 'wordstatspro_menu');
 
 /**
  * Renderiza la página de opciones del plugin
  */
-function wordstats_pro_opciones_pagina() {
+function wordstatspro_opciones_pagina() {
     if (!current_user_can('manage_options')) {
-        wp_die(__('No tienes permisos suficientes para acceder a esta página.'));
+        wp_die(esc_html__('No tienes permisos suficientes para acceder a esta página.', 'wordstatspro'));
     }
     
     $fuentes = array('Arial', 'Verdana', 'Times New Roman', 'Georgia', 'Courier New', 'Poppins', 'Alef');
-    $fuente_actual = esc_attr(get_option('wordstats_pro_tipo_fuente', 'Arial'));
+    $fuente_actual = esc_attr(get_option('wordstatspro_tipo_fuente', 'Arial'));
     ?>
     <div class="wrap">
         <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
         <form method="post" action="options.php">
             <?php
-            settings_fields('wordstats_pro_opciones');
-            do_settings_sections('wordstats_pro_opciones');
+            settings_fields('wordstatspro_opciones');
+            do_settings_sections('wordstatspro_opciones');
             ?>
             <table class="form-table">
                 <tr valign="top">
-                    <th scope="row"><?php _e('Velocidad de lectura (palabras por minuto):', 'wordstats-pro'); ?></th>
-                    <td><input type="number" min="1" max="1000" name="wordstats_pro_velocidad_letra" 
-                             value="<?php echo esc_attr(get_option('wordstats_pro_velocidad_letra', 200)); ?>" /></td>
+                    <th scope="row"><?php esc_html_e('Velocidad de lectura (palabras por minuto):', 'wordstatspro'); ?></th>
+                    <td><input type="number" min="1" max="1000" name="wordstatspro_velocidad_letra" 
+                             value="<?php echo esc_attr(get_option('wordstatspro_velocidad_letra', 200)); ?>" /></td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e('Color de fondo:', 'wordstats-pro'); ?></th>
-                    <td><input type="color" name="wordstats_pro_fondo_color" 
-                             value="<?php echo esc_attr(get_option('wordstats_pro_fondo_color', '#f0f0f0')); ?>" /></td>
+                    <th scope="row"><?php esc_html_e('Color de fondo:', 'wordstatspro'); ?></th>
+                    <td><input type="color" name="wordstatspro_fondo_color" 
+                             value="<?php echo esc_attr(get_option('wordstatspro_fondo_color', '#f0f0f0')); ?>" /></td>
                 </tr>
                                 <tr valign="top">
-                    <th scope="row"><?php _e('Color del texto:', 'wordstats-pro'); ?></th>
-                    <td><input type="color" name="wordstats_pro_texto_color" 
-                             value="<?php echo esc_attr(get_option('wordstats_pro_texto_color', '#000000')); ?>" /></td>
+                    <th scope="row"><?php esc_html_e('Color del texto:', 'wordstatspro'); ?></th>
+                    <td><input type="color" name="wordstatspro_texto_color" 
+                             value="<?php echo esc_attr(get_option('wordstatspro_texto_color', '#000000')); ?>" /></td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e('Tipo de fuente:', 'wordstats-pro'); ?></th>
+                    <th scope="row"><?php esc_html_e('Tipo de fuente:', 'wordstatspro'); ?></th>
                     <td>
-                        <select name="wordstats_pro_tipo_fuente">
+                        <select name="wordstatspro_tipo_fuente">
                             <?php 
                             foreach ($fuentes as $fuente) {
                                 printf(
@@ -356,9 +356,9 @@ function wordstats_pro_opciones_pagina() {
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e('Tamaño de fuente:', 'wordstats-pro'); ?></th>
-                    <td><input type="text" name="wordstats_pro_tamano_fuente" 
-                             value="<?php echo esc_attr(get_option('wordstats_pro_tamano_fuente', '18px')); ?>" /></td>
+                    <th scope="row"><?php esc_html_e('Tamaño de fuente:', 'wordstatspro'); ?></th>
+                    <td><input type="text" name="wordstatspro_tamano_fuente" 
+                             value="<?php echo esc_attr(get_option('wordstatspro_tamano_fuente', '18px')); ?>" /></td>
                 </tr>
             </table>
             <?php submit_button(); ?>
@@ -370,22 +370,22 @@ function wordstats_pro_opciones_pagina() {
 /**
  * Registra las opciones del plugin
  */
-function wordstats_pro_registrar_opciones() {
-    register_setting('wordstats_pro_opciones', 'wordstats_pro_velocidad_letra', 'absint');
-    register_setting('wordstats_pro_opciones', 'wordstats_pro_fondo_color', 'sanitize_hex_color');
-    register_setting('wordstats_pro_opciones', 'wordstats_pro_texto_color', 'sanitize_hex_color');
-    register_setting('wordstats_pro_opciones', 'wordstats_pro_tipo_fuente', 'sanitize_text_field');
-    register_setting('wordstats_pro_opciones', 'wordstats_pro_tamano_fuente', 'sanitize_text_field');
+function wordstatspro_registrar_opciones() {
+    register_setting('wordstatspro_opciones', 'wordstatspro_velocidad_letra', 'absint');
+    register_setting('wordstatspro_opciones', 'wordstatspro_fondo_color', 'sanitize_hex_color');
+    register_setting('wordstatspro_opciones', 'wordstatspro_texto_color', 'sanitize_hex_color');
+    register_setting('wordstatspro_opciones', 'wordstatspro_tipo_fuente', 'sanitize_text_field');
+    register_setting('wordstatspro_opciones', 'wordstatspro_tamano_fuente', 'sanitize_text_field');
 }
-add_action('admin_init', 'wordstats_pro_registrar_opciones');
+add_action('admin_init', 'wordstatspro_registrar_opciones');
 
 /**
  * Añadir CSS personalizado adicional para mejorar la presentación
  */
-function wordstats_pro_styles() {
+function wordstatspro_styles() {
     ?>
     <style>
-        .wordstats-pro-meta {
+        .wordstatspro-meta {
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             margin: 20px 0;
@@ -422,39 +422,39 @@ function wordstats_pro_styles() {
     </style>
     <?php
 }
-add_action('wp_head', 'wordstats_pro_styles');
-add_action('admin_head', 'wordstats_pro_styles');
+add_action('wp_head', 'wordstatspro_styles');
+add_action('admin_head', 'wordstatspro_styles');
 
 /**
  * Función de activación del plugin
  */
-function wordstats_pro_activar() {
+function wordstatspro_activar() {
     // Establecer valores por defecto
-    add_option('wordstats_pro_velocidad_letra', 200);
-    add_option('wordstats_pro_fondo_color', '#f0f0f0');
-    add_option('wordstats_pro_texto_color', '#000000');
-    add_option('wordstats_pro_tipo_fuente', 'Arial');
-    add_option('wordstats_pro_tamano_fuente', '18px');
+    add_option('wordstatspro_velocidad_letra', 200);
+    add_option('wordstatspro_fondo_color', '#f0f0f0');
+    add_option('wordstatspro_texto_color', '#000000');
+    add_option('wordstatspro_tipo_fuente', 'Arial');
+    add_option('wordstatspro_tamano_fuente', '18px');
 }
-register_activation_hook(__FILE__, 'wordstats_pro_activar');
+register_activation_hook(__FILE__, 'wordstatspro_activar');
 
 /**
  * Función de desactivación del plugin
  */
-function wordstats_pro_desactivar() {
+function wordstatspro_desactivar() {
     // Limpieza si es necesaria
 }
-register_deactivation_hook(__FILE__, 'wordstats_pro_desactivar');
+register_deactivation_hook(__FILE__, 'wordstatspro_desactivar');
 
 /**
  * Función de desinstalación del plugin
  */
-function wordstats_pro_desinstalar() {
+function wordstatspro_desinstalar() {
     // Eliminar opciones
-    delete_option('wordstats_pro_velocidad_letra');
-    delete_option('wordstats_pro_fondo_color');
-    delete_option('wordstats_pro_texto_color');
-    delete_option('wordstats_pro_tipo_fuente');
-    delete_option('wordstats_pro_tamano_fuente');
+    delete_option('wordstatspro_velocidad_letra');
+    delete_option('wordstatspro_fondo_color');
+    delete_option('wordstatspro_texto_color');
+    delete_option('wordstatspro_tipo_fuente');
+    delete_option('wordstatspro_tamano_fuente');
 }
-register_uninstall_hook(__FILE__, 'wordstats_pro_desinstalar');
+register_uninstall_hook(__FILE__, 'wordstatspro_desinstalar');

@@ -1,9 +1,9 @@
-=== WordStats Pro ===
+=== WordStatsPro ===
 Contributors: Pedro Luis Cuevas Villarrubia
 Donate link: https://asturwebs.es/contacto/
-Tags: statistics, readability, word count, reading time, content analysis, fernandez huerta, spanish readability
+Tags: statistics, readability, word count, reading time, spanish readability
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.6
 Stable tag: 2.1
 Requires PHP: 7.2
 License: GPLv2 or later
@@ -13,7 +13,7 @@ Analiza y muestra estadísticas detalladas de tus posts: número de palabras, ti
 
 == Description ==
 
-WordStats Pro es una herramienta profesional para analizar y mostrar estadísticas detalladas de tus posts en WordPress. Especialmente diseñado para contenido en español, incorpora el índice de legibilidad Fernández-Huerta, proporcionando información valiosa sobre la complejidad de tu contenido.
+WordStatsPro es una herramienta profesional para analizar y mostrar estadísticas detalladas de tus posts en WordPress. Especialmente diseñado para contenido en español, incorpora el índice de legibilidad Fernández-Huerta, proporcionando información valiosa sobre la complejidad de tu contenido.
 
 = Características Principales =
 
@@ -46,9 +46,9 @@ El plugin analiza tu contenido y lo clasifica en los siguientes niveles:
 
 == Installation ==
 
-1. Sube la carpeta `wordstats-pro` al directorio `/wp-content/plugins/`
+1. Sube la carpeta `wordstatspro` al directorio `/wp-content/plugins/`
 2. Activa el plugin a través del menú 'Plugins' en WordPress
-3. Ve a 'Ajustes' > 'WordStats Pro' para configurar las opciones
+3. Ve a 'Ajustes' > 'WordStatsPro' para configurar las opciones
 
 == Frequently Asked Questions ==
 
@@ -101,7 +101,7 @@ Para más información y soporte:
 
 == Privacy Policy ==
 
-WordStats Pro no recolecta ni almacena ningún dato personal de los usuarios o visitantes.
+WordStatsPro no recolecta ni almacena ningún dato personal de los usuarios o visitantes.
 
 == Credits ==
 
