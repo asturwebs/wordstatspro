@@ -42,7 +42,7 @@
 
 1. Ve a la configuración del plugin en **Ajustes > WordStats Pro**.
 2. Realiza los ajustes que consideres oportunos y guarda los cambios.
-3. Las estadisticas apareceran en la parte superior de tus artículos del Blog.
+3. Las estadísticas aparecerán en la parte superior de tus artículos del Blog.
 
 ## Soporte
 
