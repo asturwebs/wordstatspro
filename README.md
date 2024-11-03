@@ -1,6 +1,10 @@
 # WordStats Pro
 
 ![CleanShot 2024-11-03 at 09 45 03@2x](https://github.com/user-attachments/assets/772342d0-3eea-47fe-a064-897a27c61150)
+![CleanShot 2024-11-03 at 09 53 18@2x](https://github.com/user-attachments/assets/ea26c2b4-3f9e-4af0-a86f-2dff92964243)
+![CleanShot 2024-11-03 at 09 55 11@2x](https://github.com/user-attachments/assets/6dad02ae-1de2-4ef1-8de1-279c5b61cbcc)
+
+
 
 
 ## Descripción
