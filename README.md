@@ -41,8 +41,8 @@
 ## Uso
 
 1. Ve a la configuración del plugin en **Ajustes > WordStats Pro**.
-2. Selecciona el artículo que deseas analizar.
-3. Consulta las estadísticas de legibilidad para mejorar la claridad de tu contenido.
+2. Realiza los ajustes que consideres oportunos y guarda los cambios.
+3. Las estadisticas apareceran en la parte superior de tus artículos del Blog.
 
 ## Soporte
 
