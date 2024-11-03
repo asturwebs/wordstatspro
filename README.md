@@ -16,13 +16,13 @@
 
 | Nivel                 | Rango del índice  | Descripción                                   |
 |-----------------------|-------------------|-----------------------------------------------|
-| Muy fácil             | Mayor a 90        | Comprensión total con menos de 1 año de escolarización. |
-| Fácil                 | Entre 80 y 90     | Comprensión con 1er y 2º curso de primaria. |
-| Algo fácil            | Entre 70 y 80     | Comprensión con 3er y 4º curso de primaria. |
-| Normal                | Entre 60 y 70     | Comprensión con 5º y 6º curso de primaria. |
-| Algo difícil          | Entre 50 y 60     | Comprensión con 1er y 2º curso de secundaria. |
-| Difícil               | Entre 30 y 50     | Comprensión con secundaria completa. |
-| Muy difícil           | Menor a 30        | Comprensión con estudios superiores. |
+| Muy fácil             | Mayor a 90        | Texto sumamente claro, comprensible para lectores con educación básica. |
+| Fácil                 | Entre 80 y 90     | Muy comprensible, adecuado para una amplia audiencia con educación elemental. |
+| Algo fácil            | Entre 70 y 80     | Comprensible para lectores de nivel medio, requiere atención mínima. |
+| Normal                | Entre 60 y 70     | Comprensible con nivel educativo intermedio, adecuado para el público general. |
+| Algo difícil          | Entre 50 y 60     | Requiere cierto nivel de concentración, adecuado para lectores con buena comprensión lectora. |
+| Difícil               | Entre 30 y 50     | Texto complejo, dirigido a lectores con nivel educativo superior. |
+| Muy difícil           | Menor a 30        | Texto muy técnico o especializado, requiere formación avanzada para su total comprensión. |
 
 ## Instalación
 
