@@ -1,4 +1,4 @@
-# WordStats Pro
+# WordStatsPro
 
 ![CleanShot 2024-11-03 at 09 45 03@2x](https://github.com/user-attachments/assets/772342d0-3eea-47fe-a064-897a27c61150)
 ### ToolTIP:
@@ -8,7 +8,7 @@
 
 ## Descripción
 
-**WordStats Pro** es un plugin de WordPress que te permite analizar la legibilidad de tus artículos en español, ayudándote a crear contenido claro y accesible. Calcula automáticamente el índice de legibilidad Fernández-Huerta, el cual está optimizado específicamente para contenido en español, y te muestra estadísticas detalladas sobre tu texto.
+**WordStatsPro** es un plugin de WordPress que te permite analizar la legibilidad de tus artículos en español, ayudándote a crear contenido claro y accesible. Calcula automáticamente el índice de legibilidad Fernández-Huerta, el cual está optimizado específicamente para contenido en español, y te muestra estadísticas detalladas sobre tu texto.
 
 ## Características
 
@@ -33,10 +33,10 @@
 
 ## Instalación
 
-1. Descarga el archivo `wordstats-pro.zip`.
+1. Descarga el archivo `wordstatspro.zip` de la Release.
 2. Sube el archivo a la carpeta de plugins en tu instalación de WordPress (`/wp-content/plugins/`) ´o añádelo directamente desde la interface de WordPress en **Plugins > Añadir Nuevo Plugin > Subir Plugin**..
 3. Activa el plugin desde el panel de administración de WordPress en **Plugins > Plugins instalados**.
-4. Configura el plugin en **Ajustes > WordStats Pro**.
+4. Configura el plugin en **Ajustes > WordStatsPro**.
 
 ## Uso
 
