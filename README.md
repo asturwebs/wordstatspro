@@ -34,7 +34,7 @@
 ## Instalación
 
 1. Descarga el archivo `wordstats-pro.zip`.
-2. Sube el archivo a la carpeta de plugins en tu instalación de WordPress (`/wp-content/plugins/`).
+2. Sube el archivo a la carpeta de plugins en tu instalación de WordPress (`/wp-content/plugins/`) ´ó añádelo directamente desde la interface de WordPress en **Plugins > Añadir Nuevo Plugin > Subir Plugin**..
 3. Activa el plugin desde el panel de administración de WordPress en **Plugins > Plugins instalados**.
 4. Configura el plugin en **Ajustes > WordStats Pro**.
 
