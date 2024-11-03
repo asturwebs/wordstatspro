@@ -6,7 +6,7 @@
 
 ## Características
 
-- **Índice de legibilidad Fernández-Huerta**: Una medida especializada para el idioma español.
+- **Índice de legibilidad Fernández-Huerta**: Adaptación al español del índice Flesch-Kincaid, específicamente diseñado para evaluar la legibilidad de textos en español.
 - **Cálculo de complejidad**: Evalúa cuán difícil o fácil es leer un texto.
 - **Niveles de legibilidad**: Proporciona un desglose de los niveles de legibilidad.
 - **Palabras por párrafo y palabras por oración**: Ayuda a mejorar la estructura del contenido.
