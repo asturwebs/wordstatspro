@@ -14,15 +14,16 @@
 
 ## Niveles de Legibilidad
 
-| Nivel                 | Rango del índice  | Descripción                                   |
-|-----------------------|-------------------|-----------------------------------------------|
-| Muy fácil             | Mayor a 90        | Texto sumamente claro, comprensible para lectores con educación básica. |
-| Fácil                 | Entre 80 y 90     | Muy comprensible, adecuado para una amplia audiencia con educación elemental. |
-| Algo fácil            | Entre 70 y 80     | Comprensible para lectores de nivel medio, requiere atención mínima. |
-| Normal                | Entre 60 y 70     | Comprensible con nivel educativo intermedio, adecuado para el público general. |
-| Algo difícil          | Entre 50 y 60     | Requiere cierto nivel de concentración, adecuado para lectores con buena comprensión lectora. |
-| Difícil               | Entre 30 y 50     | Texto complejo, dirigido a lectores con nivel educativo superior. |
-| Muy difícil           | Menor a 30        | Texto muy técnico o especializado, requiere formación avanzada para su total comprensión. |
+| Nivel        | Rango     | Nivel Académico               | Descripción | Color de Indicador |
+|--------------|-----------|-------------------------------|-------------|---------------------|
+| Muy fácil    | 90 - 100  | Primaria baja (1° a 3° grado) | Adecuado para lectores jóvenes, con oraciones cortas y vocabulario sencillo. | ![#28a745](https://via.placeholder.com/15/28a745/000000?text=+) Verde |
+| Fácil        | 80 - 89   | Primaria media (4° a 6° grado) | Textos simples y directos, adecuados para niños o adultos con lectura básica. | ![#28a745](https://via.placeholder.com/15/28a745/000000?text=+) Verde |
+| Algo fácil   | 70 - 79   | Secundaria baja (7° a 8° grado) | Vocabulario comprensible y oraciones claras; ideal para público general. | ![#28a745](https://via.placeholder.com/15/28a745/000000?text=+) Verde |
+| Normal       | 60 - 69   | Secundaria alta (9° a 10° grado) | Comprensible para adolescentes y adultos jóvenes; usado en artículos generales. | ![#17a2b8](https://via.placeholder.com/15/17a2b8/000000?text=+) Azul |
+| Algo difícil | 50 - 59   | Bachillerato                   | Requiere un lector más experimentado; textos técnicos y académicos simples. | ![#ffc107](https://via.placeholder.com/15/ffc107/000000?text=+) Amarillo |
+| Difícil      | 30 - 49   | Nivel universitario            | Adecuado para lectores con habilidades avanzadas en comprensión; común en textos académicos y profesionales. | ![#dc3545](https://via.placeholder.com/15/dc3545/000000?text=+) Rojo |
+| Muy difícil  | 0 - 29    | Postgrado y profesionales      | Textos muy complejos, con terminología técnica o lenguaje especializado; común en literatura científica y documentos legales. | ![#dc3545](https://via.placeholder.com/15/dc3545/000000?text=+) Rojo |
+
 
 ## Instalación
 
