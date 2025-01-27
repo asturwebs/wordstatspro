@@ -1,6 +1,6 @@
 === WordStatsPro ===
 Contributors: Pedro Luis Cuevas Villarrubia
-Donate link: https://asturwebs.es/contacto/
+Donate link: https://asturwebs.es/contactanos/
 Tags: statistics, readability, word count, reading time, spanish readability
 Requires at least: 5.0
 Tested up to: 6.6
